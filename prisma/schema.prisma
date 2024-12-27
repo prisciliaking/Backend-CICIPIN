@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,116 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Users {
+  id              Int           @id @default(autoincrement())
+  role            String
+  name            String
+  username        String        @unique
+  password        String
+  email           String        @unique
+  profile_picture String
+  bookmarks       Bookmarks[]
+  restaurants     Restaurants[]
+  reviewUsers     ReviewUsers[]
+}
+
+model Restaurants {
+  id                           Int                            @id @default(autoincrement())
+  name                         String
+  address                      String
+  longtitude                   String
+  latitude                     String
+  description                  String
+  UsersID                      Int
+  bookmarks                    Bookmarks[]
+  menus                        Menus[]
+  restaurantCategoriesPairings RestaurantCategoriesPairings[]
+  restaurantImages             RestaurantImages[]
+  users                        Users                          @relation(fields: [UsersID], references: [id], onDelete: Cascade)
+  reviews                      Reviews[]
+}
+
+model Bookmarks {
+  id            Int         @id @default(autoincrement())
+  isBookmarked  Boolean
+  UsersID       Int
+  RestaurantsID Int
+  restaurants   Restaurants @relation(fields: [RestaurantsID], references: [id], onDelete: Cascade)
+  users         Users       @relation(fields: [UsersID], references: [id], onDelete: Cascade)
+}
+
+model RestaurantImages {
+  id            Int         @id @default(autoincrement())
+  image         String
+  description   String
+  RestaurantsID Int
+  restaurants   Restaurants @relation(fields: [RestaurantsID], references: [id], onDelete: Cascade)
+}
+
+model Menus {
+  id                     Int                      @id @default(autoincrement())
+  name                   String
+  image                  String
+  description            String
+  price                  String
+  RestaurantsID          Int
+  menuCategoriesPairings MenuCategoriesPairings[]
+  restaurants            Restaurants              @relation(fields: [RestaurantsID], references: [id], onDelete: Cascade)
+}
+
+model MenuCategories {
+  id                     Int                      @id @default(autoincrement())
+  categoryName           String
+  menuCategoriesPairings MenuCategoriesPairings[]
+}
+
+model MenuCategoriesPairings {
+  id               Int            @id @default(autoincrement())
+  menuID           Int
+  MenuCategoriesID Int
+  menuCategories   MenuCategories @relation(fields: [MenuCategoriesID], references: [id], onDelete: Cascade)
+  menu             Menus          @relation(fields: [menuID], references: [id], onDelete: Cascade)
+}
+
+model RestaurantCategories {
+  id                           Int                            @id @default(autoincrement())
+  categoryName                 String
+  restaurantCategoriesPairings RestaurantCategoriesPairings[]
+}
+
+model RestaurantCategoriesPairings {
+  id                     Int                  @id @default(autoincrement())
+  restaurantID           Int
+  RestaurantCategoriesID Int
+  restaurantCategories   RestaurantCategories @relation(fields: [RestaurantCategoriesID], references: [id], onDelete: Cascade)
+  restaurants            Restaurants          @relation(fields: [restaurantID], references: [id], onDelete: Cascade)
+}
+
+model Reviews {
+  id            Int             @id @default(autoincrement())
+  review        String
+  rating        Int
+  description   String
+  RestaurantsID Int
+  ReviewUsersID Int
+  reviewUsers   ReviewUsers[]
+  restaurants   Restaurants     @relation(fields: [RestaurantsID], references: [id], onDelete: Cascade)
+  reviewsImages ReviewsImages[]
+}
+
+model ReviewUsers {
+  id        Int     @id @default(autoincrement())
+  ReviewsID Int
+  UsersID   Int
+  reviews   Reviews @relation(fields: [ReviewsID], references: [id], onDelete: Cascade)
+  users     Users   @relation(fields: [UsersID], references: [id], onDelete: Cascade)
+}
+
+model ReviewsImages {
+  id        Int     @id @default(autoincrement())
+  image     String
+  ReviewsID Int
+  reviews   Reviews @relation(fields: [ReviewsID], references: [id], onDelete: Cascade)
 }

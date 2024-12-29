@@ -18,6 +18,7 @@ export interface requestUser{
     role: string;
 }
 
+
 export interface responseUser{
     id: number;
     name: string;
@@ -37,7 +38,20 @@ export function toUserResponse(users: Users){
     }
 }
 
+export function toUpdateUserResponse(users: Users){
+    return {
+        id: users.id,
+        name: users.name,
+        username: users.username,
+        email: users.email,
+        profile_picture: users.profile_picture,
+        role: users.role
+    }
+}
+
+
 export interface updateUser{
+    id: number;
     name: string;
     username: string;
     email: string;
@@ -47,6 +61,7 @@ export interface updateUser{
 }
 
 export interface deleteUser{
+    id: number;
     name: string;
     username: string;
     email: string;

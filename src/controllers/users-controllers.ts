@@ -5,12 +5,12 @@ import { request } from "http";
 
 export class UsersController {
     static async getAllUsers(req: Request, res: Response) {
-        const users = await UserService.getAllUsers;
+        const users = await UserService.getAllUsers(req.body);
         res.status(200).json(users);
     }
 
     static async getUserById(req: Request, res: Response) {
-        const users = await UserService.getUserById;
+        const users = await UserService.getUserById(req.body);
         res.status(200).json(users);
     }
 

@@ -20,7 +20,8 @@ export class userValidation{
         password: z.string().min(1).max(100),
         profile_picture: z.string(),
         role: z.string()
-    })
+    }).partial(); // Semua properti jadi opsional
+    
     static readonly DELETE: ZodType = z.object({
         name: z.string(),
         username: z.string(),

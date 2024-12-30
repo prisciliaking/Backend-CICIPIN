@@ -5,7 +5,7 @@ const zod_1 = require("zod");
 class restaurantsValidation {
 }
 exports.restaurantsValidation = restaurantsValidation;
-restaurantsValidation.CREATE = zod_1.z.object({
+restaurantsValidation.REGISTER = zod_1.z.object({
     name: zod_1.z.string().min(1).max(100),
     address: zod_1.z.string().min(1).max(100),
     longtitude: zod_1.z.string().min(1).max(100),

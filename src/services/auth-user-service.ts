@@ -3,33 +3,32 @@ import { userValidation } from "../validations/user-service";
 import {
   requestUser,
   responseUser,
-  toUserResponse,
   updateUser,
   toUpdateUserResponse,
-  deleteUser
+  deleteUser,
+  getUserRestaurants,
 } from "../models/user-model-response";
 import { Validation } from "../validations/validation";
 import { prismaClient } from "../application/database";
-import { response } from "express";
-import { get } from "http";
+import { RestaurantsList } from "../models/restaurants-model-response";
 
 export class UserService {
   static async getAllUsers(users: Users): Promise<string> {
     const getAllUsers = await prismaClient.users.findMany({
-        where: {
-            id: users.id
-        }
-    })
-    return "Get Data was successful!"
+      where: {
+        id: users.id,
+      },
+    });
+    return "Get Data was successful!";
   }
 
   static async getUserById(users: Users): Promise<string> {
     const getUserById = await prismaClient.users.findUnique({
       where: {
         id: users.id,
-      }
-    })
-    return "Get User By Id"
+      },
+    });
+    return "Get User By Id";
   }
 
   static async createUser(requestUser: requestUser): Promise<string> {
@@ -37,7 +36,7 @@ export class UserService {
     const validateRequest = Validation.validate(
       userValidation.REGISTER,
       requestUser
-    )
+    );
 
     await prismaClient.users.create({
       data: {
@@ -84,5 +83,23 @@ export class UserService {
     });
     return "Delete User";
   }
-  
+
+  static async getUserRestaurants(): Promise<getUserRestaurants[]> {
+    const users = await prismaClient.users.findMany({
+      include: { restaurants: true },
+    });
+    return users.map((user) => ({
+      id: user.id,
+      username: user.username,
+      name: user.name,
+      restaurants: user.restaurants.map((restaurant) => ({
+        id: restaurant.id,
+        name: restaurant.name,
+        address: restaurant.address,
+        longtitude: restaurant.longtitude,
+        latitude: restaurant.latitude,
+        description: restaurant.description,
+      })),
+    }));
+  }
 }

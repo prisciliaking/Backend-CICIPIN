@@ -31,4 +31,9 @@ export class UsersController {
         const users = await UserService.deleteUser(req.body);
         res.status(200).json(users);
     }
+
+    static async getUserRestaurants(req: Request, res: Response) {
+        const usersWithRestaurants = await UserService.getUserRestaurants();
+            res.status(200).json(usersWithRestaurants);
+    }
 }

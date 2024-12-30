@@ -1,4 +1,5 @@
 import { Users } from "@prisma/client";
+import { RestaurantsList } from "./restaurants-model-response";
 
 export interface createUser{
     name: string;
@@ -47,6 +48,12 @@ export function toUpdateUserResponse(users: Users){
         profile_picture: users.profile_picture,
         role: users.role
     }
+}
+
+export interface getUserRestaurants{
+    username: string;
+    name: string;
+    restaurants: RestaurantsList[];
 }
 
 

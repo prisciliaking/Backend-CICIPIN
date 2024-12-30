@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.restaurantsValidation = void 0;
+exports.restaurantsImageValidation = void 0;
 const zod_1 = require("zod");
-class restaurantsValidation {
+class restaurantsImageValidation {
 }
-exports.restaurantsValidation = restaurantsValidation;
-restaurantsValidation.CREATE = zod_1.z.object({
+exports.restaurantsImageValidation = restaurantsImageValidation;
+restaurantsImageValidation.REGISTER = zod_1.z.object({
     name: zod_1.z.string().min(1).max(100),
     description: zod_1.z.string().min(1).max(100),
     image: zod_1.z.string().min(1).max(100),
@@ -13,7 +13,7 @@ restaurantsValidation.CREATE = zod_1.z.object({
     category: zod_1.z.string().min(1).max(100),
     restaurantID: zod_1.z.number().positive(),
 });
-restaurantsValidation.UPDATE = zod_1.z.object({
+restaurantsImageValidation.UPDATE = zod_1.z.object({
     name: zod_1.z.string().min(1).max(100),
     description: zod_1.z.string().min(1).max(100),
     image: zod_1.z.string().min(1).max(100),
@@ -21,7 +21,7 @@ restaurantsValidation.UPDATE = zod_1.z.object({
     category: zod_1.z.string().min(1).max(100),
     restaurantID: zod_1.z.number().positive(),
 });
-restaurantsValidation.DELETE = zod_1.z.object({
+restaurantsImageValidation.DELETE = zod_1.z.object({
     name: zod_1.z.string().min(1).max(100),
     description: zod_1.z.string().min(1).max(100),
     image: zod_1.z.string().min(1).max(100),

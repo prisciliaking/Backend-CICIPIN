@@ -1,7 +1,7 @@
 import{z, ZodType} from "zod";
 
 export class restaurantsValidation{
-    static readonly CREATE: ZodType = z.object({
+    static readonly REGISTER: ZodType = z.object({
         name: z.string().min(1).max(100),
         address: z.string().min(1).max(100),
         longtitude: z.string().min(1).max(100),

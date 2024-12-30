@@ -17,8 +17,12 @@ const database_1 = require("../application/database");
 class UserService {
     static getAllUsers(users) {
         return __awaiter(this, void 0, void 0, function* () {
-            const getAllUsers = yield database_1.prismaClient.users.findMany();
-            return "Get All Users";
+            const getAllUsers = yield database_1.prismaClient.users.findMany({
+                where: {
+                    id: users.id,
+                },
+            });
+            return "Get Data was successful!";
         });
     }
     static getUserById(users) {
@@ -26,7 +30,7 @@ class UserService {
             const getUserById = yield database_1.prismaClient.users.findUnique({
                 where: {
                     id: users.id,
-                }
+                },
             });
             return "Get User By Id";
         });
@@ -77,6 +81,26 @@ class UserService {
                 },
             });
             return "Delete User";
+        });
+    }
+    static getUserRestaurants() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const users = yield database_1.prismaClient.users.findMany({
+                include: { restaurants: true },
+            });
+            return users.map((user) => ({
+                id: user.id,
+                username: user.username,
+                name: user.name,
+                restaurants: user.restaurants.map((restaurant) => ({
+                    id: restaurant.id,
+                    name: restaurant.name,
+                    address: restaurant.address,
+                    longtitude: restaurant.longtitude,
+                    latitude: restaurant.latitude,
+                    description: restaurant.description,
+                })),
+            }));
         });
     }
 }

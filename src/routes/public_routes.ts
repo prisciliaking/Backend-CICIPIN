@@ -6,6 +6,7 @@ import { UsersController } from "../controllers/users-controllers";
 import { RestaurantsController } from "../controllers/restaurants-controllers";
 import { MenuCategoriesController } from "../controllers/menucategories-controllers";
 import { RestaurantCategoryController } from "../controllers/restaurantcategories-controllers";
+import { ReviewsController } from "../controllers/reviews-controllers";
 
 export const publicRouter = Router();
 
@@ -37,3 +38,11 @@ publicRouter.get("/cicipin/restaurantCategories/:id", RestaurantCategoryControll
 publicRouter.post("/cicipin/restaurantCategories", RestaurantCategoryController.createRestaurantCategory);
 publicRouter.put("/cicipin/restaurantCategories/:id", RestaurantCategoryController.updateRestaurantCategory);
 publicRouter.delete("/cicipin/restaurantCategories/:id", RestaurantCategoryController.deleteRestaurantCategory);
+
+// Reviews
+publicRouter.get("/cicipin/reviews", ReviewsController.getAllReviews);
+publicRouter.get("/cicipin/reviews/:id", ReviewsController.getReviewById);
+publicRouter.post("/cicipin/reviews", ReviewsController.createReview);
+publicRouter.put("/cicipin/reviews/:id", ReviewsController.updateReview);   
+publicRouter.delete("/cicipin/reviews/:id", ReviewsController.deleteReview);
+

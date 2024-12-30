@@ -6,6 +6,7 @@ const users_controllers_1 = require("../controllers/users-controllers");
 const restaurants_controllers_1 = require("../controllers/restaurants-controllers");
 const menucategories_controllers_1 = require("../controllers/menucategories-controllers");
 const restaurantcategories_controllers_1 = require("../controllers/restaurantcategories-controllers");
+const reviews_controllers_1 = require("../controllers/reviews-controllers");
 exports.publicRouter = (0, express_1.Router)();
 // Users
 exports.publicRouter.get("/cicipin/users", users_controllers_1.UsersController.getAllUsers);
@@ -32,3 +33,9 @@ exports.publicRouter.get("/cicipin/restaurantCategories/:id", restaurantcategori
 exports.publicRouter.post("/cicipin/restaurantCategories", restaurantcategories_controllers_1.RestaurantCategoryController.createRestaurantCategory);
 exports.publicRouter.put("/cicipin/restaurantCategories/:id", restaurantcategories_controllers_1.RestaurantCategoryController.updateRestaurantCategory);
 exports.publicRouter.delete("/cicipin/restaurantCategories/:id", restaurantcategories_controllers_1.RestaurantCategoryController.deleteRestaurantCategory);
+// Reviews
+exports.publicRouter.get("/cicipin/reviews", reviews_controllers_1.ReviewsController.getAllReviews);
+exports.publicRouter.get("/cicipin/reviews/:id", reviews_controllers_1.ReviewsController.getReviewById);
+exports.publicRouter.post("/cicipin/reviews", reviews_controllers_1.ReviewsController.createReview);
+exports.publicRouter.put("/cicipin/reviews/:id", reviews_controllers_1.ReviewsController.updateReview);
+exports.publicRouter.delete("/cicipin/reviews/:id", reviews_controllers_1.ReviewsController.deleteReview);

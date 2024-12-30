@@ -1,5 +1,6 @@
 import { Restaurants } from "@prisma/client";
 import { Users } from "@prisma/client";
+import { ReviewsList } from "./reviews-model-response";
 
 
 export interface createRestaurant{
@@ -76,4 +77,14 @@ export interface RestaurantsList{
     longtitude: string;
     latitude: string;
     description: string;
+}
+
+export interface getRestaurantReviews{
+    id: number;
+    name: string;
+    address: string;
+    longtitude: string;
+    latitude: string;
+    description: string;
+    reviews: ReviewsList[];
 }

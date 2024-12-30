@@ -8,9 +8,11 @@ import {
   deleteRestaurant,
   updateRestaurant,
   toUpdateRestaurantResponse,
+  getRestaurantReviews,
 } from "../models/restaurants-model-response";
 import { Validation } from "../validations/validation";
 import { prismaClient } from "../application/database";
+import { ReviewsList } from "../models/reviews-model-response";
 
 export class RestaurantService {
   static async getAllRestaurants(
@@ -102,4 +104,7 @@ static async deleteRestaurant(deleteRestaurant: deleteRestaurant): Promise<strin
     });
     return "Delete Restaurant";
   }
+
 }
+
+

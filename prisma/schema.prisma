@@ -97,8 +97,8 @@ model Reviews {
   review        String
   rating        Int
   description   String
+  date          DateTime
   RestaurantsID Int
-  ReviewUsersID Int
   reviewUsers   ReviewUsers[]
   restaurants   Restaurants     @relation(fields: [RestaurantsID], references: [id], onDelete: Cascade)
   reviewsImages ReviewsImages[]

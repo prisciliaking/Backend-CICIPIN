@@ -4,6 +4,8 @@ exports.publicRouter = void 0;
 const express_1 = require("express");
 const users_controllers_1 = require("../controllers/users-controllers");
 const restaurants_controllers_1 = require("../controllers/restaurants-controllers");
+const menucategories_controllers_1 = require("../controllers/menucategories-controllers");
+const restaurantcategories_controllers_1 = require("../controllers/restaurantcategories-controllers");
 exports.publicRouter = (0, express_1.Router)();
 // Users
 exports.publicRouter.get("/cicipin/users", users_controllers_1.UsersController.getAllUsers);
@@ -18,3 +20,15 @@ exports.publicRouter.get("/cicipin/restaurants/:id", restaurants_controllers_1.R
 exports.publicRouter.post("/cicipin/restaurants", restaurants_controllers_1.RestaurantsController.createRestaurant);
 exports.publicRouter.put("/cicipin/restaurants/:id", restaurants_controllers_1.RestaurantsController.updateRestaurant);
 exports.publicRouter.delete("/cicipin/restaurants/:id", restaurants_controllers_1.RestaurantsController.deleteRestaurant);
+// Menu Categories
+exports.publicRouter.get("/cicipin/menuCategories", menucategories_controllers_1.MenuCategoriesController.getAllMenuCategories);
+exports.publicRouter.get("/cicipin/menuCategories/:id", menucategories_controllers_1.MenuCategoriesController.getMenuCategoryById);
+exports.publicRouter.post("/cicipin/menuCategories", menucategories_controllers_1.MenuCategoriesController.createMenuCategory);
+exports.publicRouter.put("/cicipin/menuCategories/:id", menucategories_controllers_1.MenuCategoriesController.updateMenuCategory);
+exports.publicRouter.delete("/cicipin/menuCategories/:id", menucategories_controllers_1.MenuCategoriesController.deleteMenuCategory);
+// Restaurant Categories
+exports.publicRouter.get("/cicipin/restaurantCategories", restaurantcategories_controllers_1.RestaurantCategoryController.getAllRestaurantCategories);
+exports.publicRouter.get("/cicipin/restaurantCategories/:id", restaurantcategories_controllers_1.RestaurantCategoryController.getRestaurantCategoryById);
+exports.publicRouter.post("/cicipin/restaurantCategories", restaurantcategories_controllers_1.RestaurantCategoryController.createRestaurantCategory);
+exports.publicRouter.put("/cicipin/restaurantCategories/:id", restaurantcategories_controllers_1.RestaurantCategoryController.updateRestaurantCategory);
+exports.publicRouter.delete("/cicipin/restaurantCategories/:id", restaurantcategories_controllers_1.RestaurantCategoryController.deleteRestaurantCategory);

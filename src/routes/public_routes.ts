@@ -4,6 +4,8 @@ import { Router } from 'express';
 
 import { UsersController } from "../controllers/users-controllers";
 import { RestaurantsController } from "../controllers/restaurants-controllers";
+import { MenuCategoriesController } from "../controllers/menucategories-controllers";
+import { RestaurantCategoryController } from "../controllers/restaurantcategories-controllers";
 
 export const publicRouter = Router();
 
@@ -21,3 +23,17 @@ publicRouter.get("/cicipin/restaurants/:id", RestaurantsController.getRestaurant
 publicRouter.post("/cicipin/restaurants", RestaurantsController.createRestaurant);
 publicRouter.put("/cicipin/restaurants/:id", RestaurantsController.updateRestaurant);
 publicRouter.delete("/cicipin/restaurants/:id", RestaurantsController.deleteRestaurant);
+
+// Menu Categories
+publicRouter.get("/cicipin/menuCategories", MenuCategoriesController.getAllMenuCategories);
+publicRouter.get("/cicipin/menuCategories/:id", MenuCategoriesController.getMenuCategoryById);
+publicRouter.post("/cicipin/menuCategories", MenuCategoriesController.createMenuCategory);
+publicRouter.put("/cicipin/menuCategories/:id", MenuCategoriesController.updateMenuCategory);
+publicRouter.delete("/cicipin/menuCategories/:id", MenuCategoriesController.deleteMenuCategory);
+
+// Restaurant Categories
+publicRouter.get("/cicipin/restaurantCategories", RestaurantCategoryController.getAllRestaurantCategories);
+publicRouter.get("/cicipin/restaurantCategories/:id", RestaurantCategoryController.getRestaurantCategoryById);
+publicRouter.post("/cicipin/restaurantCategories", RestaurantCategoryController.createRestaurantCategory);
+publicRouter.put("/cicipin/restaurantCategories/:id", RestaurantCategoryController.updateRestaurantCategory);
+publicRouter.delete("/cicipin/restaurantCategories/:id", RestaurantCategoryController.deleteRestaurantCategory);

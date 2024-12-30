@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toMenuCategoryResponse = toMenuCategoryResponse;
-function toMenuCategoryResponse(menuCategories, menuCategoriesPairings) {
+function toMenuCategoryResponse(menuCategories) {
     return {
         id: menuCategories.id,
-        categoryName: menuCategories.categoryName,
-        menuCategoriesPairings: menuCategoriesPairings.id
+        categoryName: menuCategories.categoryName
     };
 }

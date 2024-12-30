@@ -1,4 +1,4 @@
-import { RestaurantCategories, RestaurantCategoriesPairings } from "@prisma/client";
+import { RestaurantCategories } from "@prisma/client";
 
 export interface createRestaurantCategory{
     categoryName: string;
@@ -11,22 +11,23 @@ export interface requestRestaurantCategory{
 export interface responseRestaurantCategory{
     id: number;
     categoryName: string;
-    restaurantCategoriesPairings: RestaurantCategoriesPairings[];
 }
 
-export function toRestaurantCategoryResponse(restaurantCategories: RestaurantCategories, restaurantCategoriesPairings: RestaurantCategoriesPairings){
+export function toRestaurantCategoryResponse(restaurantCategories: RestaurantCategories){
     return {
         id: restaurantCategories.id,
         categoryName: restaurantCategories.categoryName,
-        restaurantCategoriesPairings: restaurantCategoriesPairings.id
     }
 }
 
 
 export interface updateRestaurantCategory{
+    id: number;
     categoryName: string;
+
 }
 
 export interface deleteRestaurantCategory{
+    id: number;
     categoryName: string;
 }

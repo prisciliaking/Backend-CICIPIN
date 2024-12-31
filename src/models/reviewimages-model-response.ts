@@ -2,10 +2,12 @@ import { ReviewsImages } from "@prisma/client";
 
 export interface createReviewImage{
     image: string;
+    reviewID: number;
 }
 
 export interface requestReviewImage{
     image: string;
+    reviewID: number;
 }
 
 export interface responseReviewImage{
@@ -23,9 +25,13 @@ export function toReviewImageResponse(reviewImages: ReviewsImages){
 }
 
 export interface updateReviewImage{
+    id: number;
     image: string;
+    reviewID: number;
 }
 
 export interface deleteReviewImage{
+    id: number;
     image: string;
+    reviewID: number;
 }

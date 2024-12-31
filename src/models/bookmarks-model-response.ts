@@ -1,4 +1,5 @@
 import { Bookmarks } from "@prisma/client";
+import e from "express";
 
 export interface createBookmark{
     isBookmarked: boolean;
@@ -22,5 +23,10 @@ export function toBookmarkResponse(bookmarks: Bookmarks){
         UsersID: bookmarks.UsersID,
         RestaurantsID: bookmarks.RestaurantsID
     }
+}
+
+export interface updateBookmark{
+    id: number;
+    isBookmarked: boolean;
 }
 

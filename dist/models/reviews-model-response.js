@@ -7,6 +7,7 @@ function toReviewResponse(reviews) {
         review: reviews.review,
         rating: reviews.rating,
         description: reviews.description,
+        date: reviews.date,
         RestaurantsID: reviews.RestaurantsID
     };
 }

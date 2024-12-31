@@ -1,6 +1,7 @@
 import { Menus } from "@prisma/client";
 
 export interface createMenu{
+    id: number;
     name: string;
     image: string;
     description: string;
@@ -12,6 +13,7 @@ export interface requestMenu{
     image: string;
     description: string;
     price: string;
+    RestaurantsID: number;
 }
 
 export interface responseMenu{
@@ -34,8 +36,8 @@ export function toMenuResponse(menus: Menus){
     }
 }
 
-
 export interface updateMenu{
+    id: number;
     name: string;
     image: string;
     description: string;
@@ -43,6 +45,7 @@ export interface updateMenu{
 }
 
 export interface deleteMenu{
+    id: number;
     name: string;
     image: string;
     description: string;

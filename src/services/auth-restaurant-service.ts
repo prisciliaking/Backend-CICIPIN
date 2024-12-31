@@ -105,6 +105,8 @@ static async deleteRestaurant(deleteRestaurant: deleteRestaurant): Promise<strin
     return "Delete Restaurant";
   }
 
+  // BUAT RESTO BISA MENGAMBIL DATA REVIEW HANYA DIRESTO TERTENTU SAJA
+
 }
 
 

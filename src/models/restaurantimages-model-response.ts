@@ -3,11 +3,13 @@ import { RestaurantImages } from "@prisma/client";
 export interface createRestaurantImage{
     image: string;
     description: string;
+    RestaurantsID: number;
 }
 
 export interface requestRestaurantImage{
     image: string;
     description: string;
+    RestaurantsID: number;
 }
 
 export interface responseRestaurantImage{
@@ -24,5 +26,19 @@ export function toRestaurantImageResponse(restaurantImages: RestaurantImages){
         description: restaurantImages.description,
         RestaurantsID: restaurantImages.RestaurantsID
     }
+}
+
+export interface updateRestaurantImage{
+    id: number;
+    image: string;
+    description: string;
+    RestaurantsID: number;
+}
+
+export interface deleteRestaurantImage{
+    id: number;
+    image: string;
+    description: string;
+    RestaurantsID: number;
 }
 
